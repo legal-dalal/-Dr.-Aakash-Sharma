@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Aakash Sharma | MD Clinical Nutrition & Dietetics</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                            teal: '#0d9488',
+                            darkTeal: '#115e59',
+                            warmBg: '#fbfbf8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fbfbf8;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #064e3b 0%, #0d9488 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(220, 252, 231, 0.8);
+        }
+        .img-overlay {
+            background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(6,78,59,0.95) 100%);
+        }
+        .custom-scroll::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #059669;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-brand-900 text-brand-100 text-xs py-2 px-4 text-center font-medium flex justify-center items-center gap-3">
+        <span><i class="fa-solid fa-bullhorn text-brand-400 mr-1"></i> Special Online Consultation Discount: 20% Off on First Diet Plan Booking!</span>
+        <button onclick="openBookingModal()" class="underline font-bold hover:text-white transition">Book Slot Now</button>
+    </div>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-brand-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="scrollToSection('hero')">
+                    <div class="w-12 h-12 bg-gradient-to-tr from-brand-600 to-brand-teal rounded-2xl flex items-center justify-center text-white shadow-lg shadow-brand-500/20">
+                        <i class="fa-solid fa-heart-pulse text-2xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-extrabold tracking-tight text-slate-900 block leading-tight">Dr. Aakash Sharma</span>
+                        <span class="text-xs font-semibold text-brand-600 uppercase tracking-wider">MD Clinical Nutrition & Dietetics</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden lg:flex items-center space-x-7 font-medium text-slate-600 text-sm">
+                    <a href="#about" class="hover:text-brand-600 transition-colors">About</a>
+                    <a href="#services" class="hover:text-brand-600 transition-colors">Specialties</a>
+                    <a href="#calculators" class="hover:text-brand-600 transition-colors">Calculators</a>
+                    <a href="#swaps" class="hover:text-brand-600 transition-colors">Food Swaps</a>
+                    <a href="#recipes" class="hover:text-brand-600 transition-colors">Recipes</a>
+                    <a href="#transformations" class="hover:text-brand-600 transition-colors">Results</a>
+                    <a href="#blogs" class="hover:text-brand-600 transition-colors">Articles</a>
+                    <a href="#contact" class="hover:text-brand-600 transition-colors">Clinic</a>
+                </div>
+
+                <!-- Book CTA -->
+                <div class="hidden md:flex items-center space-x-3">
+                    <a href="https://wa.me/?text=Hello%20Dr.%20Aakash,%20I%20want%20to%20consult%20regarding%20my%20diet" target="_blank" class="p-2.5 rounded-xl border border-emerald-200 text-emerald-600 hover:bg-emerald-50 transition" title="WhatsApp Doctor">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                    </a>
+                    <button onclick="openBookingModal()" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-2 text-sm">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        <span>Book Appointment</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-brand-600 focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-100 px-4 pt-2 pb-6 space-y-2">
+            <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-brand-50 font-medium">About Doctor</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-brand-50 font-medium">Clinical Services</a>
+            <a href="#calculators" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-brand-50 font-medium">Body Calculators</a>
+            <a href="#swaps" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-brand-50 font-medium">Healthy Food Swaps</a>
+            <a href="#recipes" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-brand-50 font-medium">Healthy Recipes</a>
+            <a href="#transformations" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-brand-50 font-medium">Patient Transformations</a>
+            <a href="#blogs" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-brand-50 font-medium">Health Articles</a>
+            <button onclick="toggleMobileMenu(); openBookingModal()" class="w-full mt-2 bg-brand-600 text-white font-semibold py-3 rounded-xl shadow-md">Book Consultation</button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION WITH DOCTOR PORTRAIT -->
+    <section id="hero" class="relative overflow-hidden bg-gradient-to-b from-brand-50/70 via-white to-slate-50 py-12 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Text Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100 text-brand-900 text-xs sm:text-sm font-semibold border border-brand-200 shadow-sm">
+                        <span class="flex h-2.5 w-2.5 rounded-full bg-brand-500 animate-ping"></span>
+                        <i class="fa-solid fa-award text-brand-700"></i>
+                        <span>14+ Years Clinical Practice • 18,000+ Patient Transformations</span>
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight">
+                        Sahi Poshan, Permanent Fit Health! <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-brand-teal to-emerald-800">Bina भूखे Diets Ke.</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+                        Aapke ghar ke khane (Roti, Dal, Sabzi) ke saath customized medical & lifestyle nutrition plans. 
+                        <strong>Dr. Aakash Sharma</strong> help karte hain Weight Reversal, Diabetes, Fatty Liver, Thyroid aur PCOS/PCOD control karne mein.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <button onclick="openBookingModal()" class="w-full sm:w-auto px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-2xl shadow-lg shadow-brand-600/30 transition-all duration-200 flex items-center justify-center gap-3 group">
+                            <span>Book In-Clinic / Online Slot</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                        <a href="#swaps" class="w-full sm:w-auto px-7 py-4 bg-white hover:bg-slate-50 text-slate-800 font-bold rounded-2xl border border-slate-200 shadow-sm transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-apple-whole text-brand-600"></i>
+                            <span>Explore Food Swaps</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust Signals -->
+                    <div class="pt-8 border-t border-slate-200 grid grid-cols-3 gap-4 text-center lg:text-left">
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-black text-brand-700">18K+</p>
+                            <p class="text-xs sm:text-sm text-slate-500 font-medium">Happy Patients</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-black text-brand-700">99.2%</p>
+                            <p class="text-xs sm:text-sm text-slate-500 font-medium">Goal Success Rate</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-black text-brand-700">4.9 ★</p>
+                            <p class="text-xs sm:text-sm text-slate-500 font-medium">Google Reviews</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Doctor Image Showcase -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <!-- Glow Effects -->
+                        <div class="absolute -top-6 -left-6 w-72 h-72 bg-brand-300 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-pulse"></div>
+                        <div class="absolute -bottom-6 -right-6 w-72 h-72 bg-emerald-200 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-pulse"></div>
+                        
+                        <!-- Doctor Main Card -->
+                        <div class="relative bg-white p-4 rounded-3xl shadow-2xl border border-brand-100 overflow-hidden">
+                            <div class="relative rounded-2xl overflow-hidden h-96 group">
+                                <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=1000" alt="Dr. Aakash Sharma - Senior Nutritionist" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 img-overlay flex flex-col justify-end p-5 text-white">
+                                    <span class="bg-brand-500/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full w-max mb-2">Chief Clinical Dietitian</span>
+                                    <h3 class="text-2xl font-bold">Dr. Aakash Sharma</h3>
+                                    <p class="text-xs text-brand-100">M.D. Clinical Nutrition • AIIMS Certified Practitioner</p>
+                                </div>
+                            </div>
+
+                            <!-- Floating Badge 1 -->
+                            <div class="absolute top-8 left-8 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-lg border border-slate-100 flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs">
+                                    <i class="fa-solid fa-stethoscope"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-slate-400 uppercase font-bold">Specialty</p>
+                                    <p class="text-xs font-extrabold text-slate-800">Diabetes & Weight</p>
+                                </div>
+                            </div>
+
+                            <!-- Floating Badge 2 -->
+                            <div class="absolute bottom-10 right-8 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-lg border border-slate-100 flex items-center gap-3">
+                                <div class="flex -space-x-2">
+                                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" class="w-7 h-7 rounded-full border-2 border-white object-cover">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100" class="w-7 h-7 rounded-full border-2 border-white object-cover">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100" class="w-7 h-7 rounded-full border-2 border-white object-cover">
+                                </div>
+                                <div>
+                                    <p class="text-xs font-extrabold text-slate-800">4.9/5 Rating</p>
+                                    <p class="text-[10px] text-slate-500">From 2,400+ Patients</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION WITH DOCTOR CONSULTING PHOTO -->
+    <section id="about" class="py-16 sm:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Collage Image -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative rounded-3xl overflow-hidden shadow-xl border-4 border-slate-100">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1000" alt="Dr. Aakash consulting patient" class="w-full h-[420px] object-cover">
+                    </div>
+                    <div class="absolute -bottom-8 -right-6 hidden sm:block w-56 h-56 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&q=80&w=600" alt="Healthy Food Consultation" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <!-- Right Detailed Info -->
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="text-brand-600 font-bold text-xs sm:text-sm tracking-widest uppercase bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Meet Your Medical Nutritionist</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
+                        Science-Backed Food Therapy <br class="hidden sm:inline"> Without Restrictive Extreme Starvation
+                    </h2>
+                    
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        "Mera belief hai ki khana sirf body ka fuel nahi hai, ye aapki sabse pehli dawa bhi hai. Internet ke fancy crash diets aapka metabolism slow kar dete hain. Hum desi khane ki nutrition power ko optimize karke permanent health results laate hain."
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70 flex gap-3.5 items-start">
+                            <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center font-bold shrink-0">
+                                <i class="fa-solid fa-graduation-cap text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">Qualified Qualifications</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">M.D. (Clinical Nutrition), M.Sc (Food Sciences), Certified Diabetes Educator.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70 flex gap-3.5 items-start">
+                            <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center font-bold shrink-0">
+                                <i class="fa-solid fa-vial-circle-check text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">Blood-Report Based Plans</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Thyroid, Vitamin D, HbA1c aur Lipid profile analyze karke diet plan banana.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-6 pt-4">
+                        <button onclick="openBookingModal()" class="px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-sm transition">
+                            Schedule In-Clinic Visit
+                        </button>
+                        <div class="flex items-center gap-2 text-xs font-bold text-slate-600">
+                            <i class="fa-solid fa-shield-halved text-brand-600 text-lg"></i>
+                            <span>100% Medical Confidentiality Guarantee</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CLINICAL SERVICES SECTION WITH HIGH-RES CARDS -->
+    <section id="services" class="py-16 sm:py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-brand-600 font-bold text-xs sm:text-sm tracking-wider uppercase bg-white px-3 py-1 rounded-full shadow-sm">Specialized Programs</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Comprehensive Health Programs</h2>
+                <p class="text-slate-600 text-sm sm:text-base mt-2">Personalized nutrition guidance crafted specially for your age, body type, and medical background.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&q=80&w=800" alt="Sustainable Weight Loss" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-brand-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">Most Popular</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-lg mb-3">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Sustainable Weight Loss</h3>
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">Lose 3 to 6 kgs per month smoothly without weakness, hair fall, or starvation using traditional home cooked meals.</p>
+                        <button onclick="openBookingModal()" class="text-brand-600 font-bold text-xs flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                            <span>Get Custom Weight Plan</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&q=80&w=800" alt="Diabetes Management" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-lg mb-3">
+                            <i class="fa-solid fa-droplet"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Diabetes & HbA1c Reversal</h3>
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">Low Glycemic Index food combinations designed to naturally reduce fasting sugar levels and medicine dependency.</p>
+                        <button onclick="openBookingModal()" class="text-brand-600 font-bold text-xs flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                            <span>Get Diabetes Protocol</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=800" alt="PCOS & Thyroid Care" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-lg mb-3">
+                            <i class="fa-solid fa-venus"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">PCOS / PCOD & Thyroid Care</h3>
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">Hormonal balance nutrition for regulating cycle, curbing stubborn abdominal fat, and overcoming fatigue.</p>
+                        <button onclick="openBookingModal()" class="text-brand-600 font-bold text-xs flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                            <span>Get Hormonal Care</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?auto=format&fit=crop&q=80&w=800" alt="Gut Health" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-lg mb-3">
+                            <i class="fa-solid fa-bacteria"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Gut Microbiome & Fatty Liver</h3>
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">Fix bloating, acidity, IBS, and Grade 1/2 Fatty Liver with customized gut repair foods and natural probiotics.</p>
+                        <button onclick="openBookingModal()" class="text-brand-600 font-bold text-xs flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                            <span>Get Gut Healing Diet</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&q=80&w=800" alt="Sports & Fitness Nutrition" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-lg mb-3">
+                            <i class="fa-solid fa-dumbbell"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Sports & Muscle Building</h3>
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">High-protein athletic meal distribution for gym enthusiasts, bodybuilders, and endurance athletes.</p>
+                        <button onclick="openBookingModal()" class="text-brand-600 font-bold text-xs flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                            <span>Get Sports Plan</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&q=80&w=800" alt="Child & Elderly Nutrition" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-lg mb-3">
+                            <i class="fa-solid fa-people-roof"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Child Growth & Family Wellness</h3>
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">Immunity boosting diets for kids, pregnant mothers, and senior citizens addressing micronutrient deficiencies.</p>
+                        <button onclick="openBookingModal()" class="text-brand-600 font-bold text-xs flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                            <span>Get Family Care</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION 1: HEALTHY VS UNHEALTHY FOOD SWAP GUIDE -->
+    <section id="swaps" class="py-16 sm:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-brand-600 font-bold text-xs sm:text-sm tracking-wider uppercase bg-brand-50 px-3 py-1 rounded-full border border-brand-100">Smart Substitution Guide</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Smart Food Swaps For Weight Loss</h2>
+                <p class="text-slate-600 text-sm sm:text-base mt-2">Badlav chhota, results bada! See how replacing high calorie items with simple alternatives can transform your health.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Swap 1 -->
+                <div class="bg-slate-50 rounded-3xl p-6 border border-slate-200 relative">
+                    <span class="absolute -top-3 left-6 bg-brand-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase">Swap #1</span>
+                    <div class="grid grid-cols-2 gap-4 mt-2">
+                        <div class="text-center bg-rose-50 p-3 rounded-2xl border border-rose-100">
+                            <img src="https://images.unsplash.com/photo-1621996346565-e3d5d6281308?auto=format&fit=crop&q=80&w=300" class="w-full h-24 object-cover rounded-xl mb-2">
+                            <p class="text-xs font-bold text-rose-700">Refined Pasta / Maida</p>
+                            <p class="text-[11px] text-slate-500 font-medium">350 Calories • High GI</p>
+                        </div>
+                        <div class="text-center bg-emerald-50 p-3 rounded-2xl border border-emerald-100">
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=300" class="w-full h-24 object-cover rounded-xl mb-2">
+                            <p class="text-xs font-bold text-emerald-700">Millet / Zucchini Bowl</p>
+                            <p class="text-[11px] text-slate-500 font-medium">180 Calories • High Fiber</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-200 text-xs text-slate-600 font-medium text-center">
+                        <i class="fa-solid fa-circle-check text-brand-600 mr-1"></i> Saves <strong>170 Calories</strong> & keeps you full 3x longer!
+                    </div>
+                </div>
+
+                <!-- Swap 2 -->
+                <div class="bg-slate-50 rounded-3xl p-6 border border-slate-200 relative">
+                    <span class="absolute -top-3 left-6 bg-brand-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase">Swap #2</span>
+                    <div class="grid grid-cols-2 gap-4 mt-2">
+                        <div class="text-center bg-rose-50 p-3 rounded-2xl border border-rose-100">
+                            <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&q=80&w=300" class="w-full h-24 object-cover rounded-xl mb-2">
+                            <p class="text-xs font-bold text-rose-700">Carbonated Drinks</p>
+                            <p class="text-[11px] text-slate-500 font-medium">210 Calories • 10 tsp Sugar</p>
+                        </div>
+                        <div class="text-center bg-emerald-50 p-3 rounded-2xl border border-emerald-100">
+                            <img src="https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&q=80&w=300" class="w-full h-24 object-cover rounded-xl mb-2">
+                            <p class="text-xs font-bold text-emerald-700">Chia Mint Cooler</p>
+                            <p class="text-[11px] text-slate-500 font-medium">35 Calories • Zero Sugar</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-200 text-xs text-slate-600 font-medium text-center">
+                        <i class="fa-solid fa-circle-check text-brand-600 mr-1"></i> Prevents sudden sugar spikes & fatty liver risk.
+                    </div>
+                </div>
+
+                <!-- Swap 3 -->
+                <div class="bg-slate-50 rounded-3xl p-6 border border-slate-200 relative">
+                    <span class="absolute -top-3 left-6 bg-brand-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase">Swap #3</span>
+                    <div class="grid grid-cols-2 gap-4 mt-2">
+                        <div class="text-center bg-rose-50 p-3 rounded-2xl border border-rose-100">
+                            <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&q=80&w=300" class="w-full h-24 object-cover rounded-xl mb-2">
+                            <p class="text-xs font-bold text-rose-700">Deep Fried Namkeen</p>
+                            <p class="text-[11px] text-slate-500 font-medium">280 Calories • Bad Trans Fat</p>
+                        </div>
+                        <div class="text-center bg-emerald-50 p-3 rounded-2xl border border-emerald-100">
+                            <img src="https://images.unsplash.com/photo-1599490659213-e2b9527bd087?auto=format&fit=crop&q=80&w=300" class="w-full h-24 object-cover rounded-xl mb-2">
+                            <p class="text-xs font-bold text-emerald-700">Roasted Makhana</p>
+                            <p class="text-[11px] text-slate-500 font-medium">110 Calories • Rich Calcium</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-200 text-xs text-slate-600 font-medium text-center">
+                        <i class="fa-solid fa-circle-check text-brand-600 mr-1"></i> Ideal evening snack for weight control & heart health.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE HEALTH CALCULATORS SECTION -->
+    <section id="calculators" class="py-16 sm:py-24 bg-gradient-to-b from-slate-50 to-brand-50/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-600 font-bold text-xs sm:text-sm tracking-wider uppercase">Interactive Health Tools</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Aapke Body Parameters Calculator</h2>
+                <p class="text-slate-600 text-sm sm:text-base mt-2">Know your exact daily calorie intake, water requirement, and BMI score in 10 seconds.</p>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden max-w-4xl mx-auto">
+                <!-- Calculator Tabs -->
+                <div class="flex border-b border-slate-200 bg-slate-50">
+                    <button onclick="switchCalc('bmi')" id="tab-bmi" class="flex-1 py-4 text-center font-bold text-slate-800 border-b-2 border-brand-600 bg-white transition-all flex items-center justify-center gap-2 text-sm sm:text-base">
+                        <i class="fa-solid fa-weight-scale text-brand-600"></i>
+                        <span>BMI Calculator</span>
+                    </button>
+                    <button onclick="switchCalc('calorie')" id="tab-calorie" class="flex-1 py-4 text-center font-bold text-slate-500 border-b-2 border-transparent transition-all flex items-center justify-center gap-2 text-sm sm:text-base">
+                        <i class="fa-solid fa-fire text-amber-500"></i>
+                        <span>Daily Calorie (TDEE)</span>
+                    </button>
+                    <button onclick="switchCalc('water')" id="tab-water" class="flex-1 py-4 text-center font-bold text-slate-500 border-b-2 border-transparent transition-all flex items-center justify-center gap-2 text-sm sm:text-base">
+                        <i class="fa-solid fa-glass-water text-cyan-500"></i>
+                        <span>Water Goal</span>
+                    </button>
+                </div>
+
+                <!-- Tab 1: BMI Calculator -->
+                <div id="calc-bmi" class="p-6 sm:p-10 space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Height (in cm)</label>
+                            <input type="number" id="bmi-height" placeholder="e.g. 172" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Weight (in kg)</label>
+                            <input type="number" id="bmi-weight" placeholder="e.g. 70" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                        </div>
+                    </div>
+                    <button onclick="calculateBMI()" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3.5 rounded-xl shadow transition">Calculate My BMI</button>
+                    
+                    <div id="bmi-result" class="hidden p-6 rounded-2xl bg-brand-50 border border-brand-200 text-center space-y-2 animate-fadeIn">
+                        <p class="text-xs font-semibold text-slate-600 uppercase">Your BMI Index</p>
+                        <p class="text-4xl font-extrabold text-brand-900" id="bmi-score">0</p>
+                        <p class="text-base font-bold" id="bmi-status"></p>
+                        <p class="text-xs text-slate-600 pt-1" id="bmi-tip"></p>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Calorie Calculator -->
+                <div id="calc-calorie" class="p-6 sm:p-10 space-y-6 hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Age (Years)</label>
+                            <input type="number" id="cal-age" placeholder="28" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Gender</label>
+                            <select id="cal-gender" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Weight (kg)</label>
+                            <input type="number" id="cal-weight" placeholder="68" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Height (cm)</label>
+                            <input type="number" id="cal-height" placeholder="170" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Activity Level</label>
+                            <select id="cal-activity" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                                <option value="1.2">Sedentary (Desk Job)</option>
+                                <option value="1.375">Lightly Active (1-3 days/week exercise)</option>
+                                <option value="1.55">Moderately Active (3-5 days/week)</option>
+                                <option value="1.725">Very Active (Heavy Workout)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="calculateCalories()" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3.5 rounded-xl shadow transition">Calculate Calorie Target</button>
+                    
+                    <div id="cal-result" class="hidden p-6 rounded-2xl bg-brand-50 border border-brand-200 text-center space-y-3">
+                        <p class="text-xs font-semibold text-slate-600 uppercase">Daily Maintenance Calories (TDEE)</p>
+                        <p class="text-4xl font-extrabold text-brand-900"><span id="cal-score">0</span> kcal/day</p>
+                        <div class="grid grid-cols-2 gap-3 text-xs pt-2">
+                            <div class="bg-white p-3 rounded-xl border border-brand-100">Fat Loss Target: <strong id="cal-loss" class="text-emerald-700 font-extrabold block text-sm">0 kcal</strong></div>
+                            <div class="bg-white p-3 rounded-xl border border-brand-100">Muscle Gain Target: <strong id="cal-gain" class="text-emerald-700 font-extrabold block text-sm">0 kcal</strong></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Water Intake Calculator -->
+                <div id="calc-water" class="p-6 sm:p-10 space-y-6 hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Weight (kg)</label>
+                            <input type="number" id="water-weight" placeholder="e.g. 72" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Daily Exercise (Minutes)</label>
+                            <input type="number" id="water-exercise" placeholder="e.g. 45" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                        </div>
+                    </div>
+                    <button onclick="calculateWater()" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3.5 rounded-xl shadow transition">Calculate Water Requirement</button>
+                    
+                    <div id="water-result" class="hidden p-6 rounded-2xl bg-cyan-50 border border-cyan-200 text-center space-y-2">
+                        <p class="text-xs font-semibold text-slate-600 uppercase">Daily Hydration Target</p>
+                        <p class="text-4xl font-extrabold text-cyan-900"><span id="water-score">0</span> Liters</p>
+                        <p class="text-xs text-slate-600">Equates to approx <span id="water-glasses" class="font-bold text-cyan-800">0</span> glasses (250ml each) daily.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION 2: HEALTHY RECIPES & SUPERFOOD GALLERY SECTION -->
+    <section id="recipes" class="py-16 sm:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
+                <div>
+                    <span class="text-brand-600 font-bold text-xs sm:text-sm tracking-wider uppercase bg-brand-50 px-3 py-1 rounded-full border border-brand-100">Doctor's Kitchen</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Healthy & Tasty Indian Recipes</h2>
+                </div>
+                <p class="text-slate-500 text-sm mt-2 md:mt-0 max-w-md">Healthy khana matlab feeka khana nahi! Try these doctor-tested nutrient packed recipes.</p>
+            </div>
+
+            <!-- Recipe Filter Buttons -->
+            <div class="flex flex-wrap gap-2 mb-8">
+                <button onclick="filterRecipe('all')" class="recipe-btn active px-4 py-2 rounded-xl text-xs font-bold bg-brand-600 text-white">All Recipes</button>
+                <button onclick="filterRecipe('breakfast')" class="recipe-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200">High Protein Breakfast</button>
+                <button onclick="filterRecipe('detox')" class="recipe-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200">Detox & Gut Drinks</button>
+                <button onclick="filterRecipe('dinner')" class="recipe-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200">Low Carb Dinners</button>
+            </div>
+
+            <!-- Recipe Grid -->
+            <div id="recipe-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Javascript will render recipes dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- PATIENT TRANSFORMATIONS SECTION WITH REAL BEFORE/AFTER PHOTOS -->
+    <section id="transformations" class="py-16 sm:py-24 bg-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-brand-400 font-bold text-xs sm:text-sm tracking-widest uppercase">Verified Results</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Real Patients, Real Transformations</h2>
+                <p class="text-slate-400 text-sm sm:text-base mt-2">Bina kisi harmful pills ya crash diets ke. Dekhiye logon ki inspiring journeys.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Story 1 -->
+                <div class="bg-slate-800 rounded-3xl p-6 border border-slate-700 hover:border-brand-500 transition-all">
+                    <div class="relative h-60 rounded-2xl overflow-hidden mb-4">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
+                        <div class="absolute bottom-3 left-3 right-3 bg-slate-900/90 backdrop-blur-md px-3 py-2 rounded-xl flex justify-between text-xs font-bold">
+                            <span class="text-rose-400">Before: 94 kg</span>
+                            <span class="text-emerald-400">After: 76 kg (-18 kg)</span>
+                        </div>
+                    </div>
+                    <div class="flex text-amber-400 gap-1 mb-2 text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white">Vikas Malhotra (IT Engineer)</h3>
+                    <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                        "12 hours sitting desk job thi aur Fatty Liver Grade 2 tha. Dr. Aakash ke plan se 4 months mein mera vajan 18 kg kam hua aur liver normal reports aaye."
+                    </p>
+                </div>
+
+                <!-- Story 2 -->
+                <div class="bg-slate-800 rounded-3xl p-6 border border-slate-700 hover:border-brand-500 transition-all">
+                    <div class="relative h-60 rounded-2xl overflow-hidden mb-4">
+                        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
+                        <div class="absolute bottom-3 left-3 right-3 bg-slate-900/90 backdrop-blur-md px-3 py-2 rounded-xl flex justify-between text-xs font-bold">
+                            <span class="text-rose-400">HbA1c: 8.9 (High)</span>
+                            <span class="text-emerald-400">HbA1c: 5.8 (Normal)</span>
+                        </div>
+                    </div>
+                    <div class="flex text-amber-400 gap-1 mb-2 text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white">Anjali Sharma (School Teacher)</h3>
+                    <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                        "PCOS aur high blood sugar issue control me nahi aa raha tha. Dr. Aakash ne simple ghar ki roti-subzi time par arrange karke mera diabetes reverse kar diya!"
+                    </p>
+                </div>
+
+                <!-- Story 3 -->
+                <div class="bg-slate-800 rounded-3xl p-6 border border-slate-700 hover:border-brand-500 transition-all">
+                    <div class="relative h-60 rounded-2xl overflow-hidden mb-4">
+                        <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
+                        <div class="absolute bottom-3 left-3 right-3 bg-slate-900/90 backdrop-blur-md px-3 py-2 rounded-xl flex justify-between text-xs font-bold">
+                            <span class="text-amber-400">PCOS Symptoms: High</span>
+                            <span class="text-emerald-400">Regular Cycle & Fit</span>
+                        </div>
+                    </div>
+                    <div class="flex text-amber-400 gap-1 mb-2 text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white">Pooja Deshmukh</h3>
+                    <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                        "Gym karke exhausted ho chuki thi par weight inches kam nahi ho rahe the. Doctor ne seedha mera metabolism fix kiya. Super thankful!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION 3: DOCTOR'S ACHIEVEMENTS & PRESS GALLERY -->
+    <section class="py-16 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-brand-600 font-bold text-xs uppercase tracking-wider">Recognition & Trust</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">Featured In Media & Health Summits</h2>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center">
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-center">
+                    <i class="fa-solid fa-newspaper text-3xl text-brand-600 mb-2"></i>
+                    <p class="text-xs font-bold text-slate-800">Times Health Icon 2024</p>
+                    <p class="text-[10px] text-slate-500">Best Nutritionist Award</p>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-center">
+                    <i class="fa-solid fa-circle-check text-3xl text-brand-600 mb-2"></i>
+                    <p class="text-xs font-bold text-slate-800">AIIMS Certified</p>
+                    <p class="text-[10px] text-slate-500">Clinical Nutrition Practice</p>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-center">
+                    <i class="fa-solid fa-tv text-3xl text-brand-600 mb-2"></i>
+                    <p class="text-xs font-bold text-slate-800">TV Health Expert</p>
+                    <p class="text-[10px] text-slate-500">Featured On NDTV & AajTak</p>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-center">
+                    <i class="fa-solid fa-book-bookmark text-3xl text-brand-600 mb-2"></i>
+                    <p class="text-xs font-bold text-slate-800">Author of 2 Books</p>
+                    <p class="text-[10px] text-slate-500">Indian Superfood Guide</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HEALTH BLOGS & ARTICLES SECTION -->
+    <section id="blogs" class="py-16 sm:py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
+                <div>
+                    <span class="text-brand-600 font-bold text-xs sm:text-sm tracking-wider uppercase bg-white px-3 py-1 rounded-full shadow-sm">Doctor's Journal</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Latest Nutrition Guidance</h2>
+                </div>
+                <p class="text-slate-500 text-sm mt-2 md:mt-0 max-w-md">Simple, easy to understand health advice to clear common WhatsApp myths.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <article class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 bg-brand-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-full">Fat Loss</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 leading-snug">5 Desi Superfoods Jo Metabolism 2X Fast Karte Hain</h3>
+                            <p class="text-slate-600 text-xs line-clamp-3 mb-4">Amla, Sabja seeds, Jeera paani aur Ghee ka sahi tarika istemal karke belly fat kaise reduce karein.</p>
+                        </div>
+                        <button onclick="readBlog('superfoods')" class="text-brand-600 font-bold text-xs flex items-center gap-1 hover:underline">Read Full Article &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 bg-brand-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-full">Diabetes</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 leading-snug">Kya Diabetes Patient Roti Aur Rice Kha Sakte Hain?</h3>
+                            <p class="text-slate-600 text-xs line-clamp-3 mb-4">Glycemic index aur portion control ka secret formula jo sugar level normal rakhta hai.</p>
+                        </div>
+                        <button onclick="readBlog('diabetes')" class="text-brand-600 font-bold text-xs flex items-center gap-1 hover:underline">Read Full Article &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 bg-brand-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-full">Gut Health</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 leading-snug">Acidity, Gas aur Constipation Ka Permanent Solution</h3>
+                            <p class="text-slate-600 text-xs line-clamp-3 mb-4">Gut microbiome ko heal karke digestive problems hamesha ke liye door karein.</p>
+                        </div>
+                        <button onclick="readBlog('gut')" class="text-brand-600 font-bold text-xs flex items-center gap-1 hover:underline">Read Full Article &rarr;</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-16 sm:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-brand-600 font-bold text-xs sm:text-sm tracking-wider uppercase bg-brand-50 px-3 py-1 rounded-full">Clear Your Doubts</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4">
+                <div class="border border-slate-200 rounded-2xl bg-slate-50/50 overflow-hidden">
+                    <button onclick="toggleFaq(1)" class="w-full text-left p-5 font-bold text-slate-800 flex justify-between items-center text-sm sm:text-base">
+                        <span>Kya diet chart mein fancy imported items khareedne padenge?</span>
+                        <i id="faq-icon-1" class="fa-solid fa-chevron-down text-brand-600 transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-1" class="hidden px-5 pb-5 text-xs sm:text-sm text-slate-600 border-t border-slate-200/60 pt-3 leading-relaxed">
+                        Bilkul nahi! Dr. Aakash ka pure focus aapke ghar pe banne wale regular khane par hota hai (Roti, Chawal, Dal, Subzi, Dahi, Paneer). Kisi bhi exotic ya mehnge ingredients ki zaroorat nahi hai.
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 rounded-2xl bg-slate-50/50 overflow-hidden">
+                    <button onclick="toggleFaq(2)" class="w-full text-left p-5 font-bold text-slate-800 flex justify-between items-center text-sm sm:text-base">
+                        <span>Online consultation kaise karya karti hai?</span>
+                        <i id="faq-icon-2" class="fa-solid fa-chevron-down text-brand-600 transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-2" class="hidden px-5 pb-5 text-xs sm:text-sm text-slate-600 border-t border-slate-200/60 pt-3 leading-relaxed">
+                        Aap slot book karte hain, phir hamari team aapse Contact karti hai. Complete blood reports aur lifestyle study karne ke baad Video Call / Phone Call par Dr. Aakash khud consultation dete hain.
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 rounded-2xl bg-slate-50/50 overflow-hidden">
+                    <button onclick="toggleFaq(3)" class="w-full text-left p-5 font-bold text-slate-800 flex justify-between items-center text-sm sm:text-base">
+                        <span>Kya vajan kam hone ke baad wapas badh jayega?</span>
+                        <i id="faq-icon-3" class="fa-solid fa-chevron-down text-brand-600 transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-3" class="hidden px-5 pb-5 text-xs sm:text-sm text-slate-600 border-t border-slate-200/60 pt-3 leading-relaxed">
+                        Kyunki ye koi crash diet nahi hai, hum aapka metabolism heal karte hain. Iss wajah se diet plan khatam hone ke baad bhi vajan hamesha maintain rehta hai.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & CLINIC LOCATION PREVIEW -->
+    <section id="contact" class="py-16 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-brand-400 font-bold text-xs uppercase tracking-widest">Visit Our Clinic</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Health First Nutrition Center</h2>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        In-person clinical consultation ke liye hamare Delhi clinic visit karein ya poore India se Online consultation book karein.
+                    </p>
+
+                    <div class="space-y-4 pt-2 text-sm text-slate-300">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-brand-400 text-lg mt-1"></i>
+                            <div>
+                                <strong class="text-white block">Clinic Address:</strong>
+                                Suite 402, Medical Enclave, Sector 18, Opp. City Mall, New Delhi - 110001
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-brand-400 text-lg"></i>
+                            <div>
+                                <strong class="text-white">Helpline:</strong> +91 98765 43210 / 011-24567890
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-clock text-brand-400 text-lg"></i>
+                            <div>
+                                <strong class="text-white">Timings:</strong> Mon - Sat: 10:00 AM - 7:00 PM (Sunday Closed)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map Mockup Box -->
+                <div class="lg:col-span-6 bg-slate-800 p-4 rounded-3xl border border-slate-700 shadow-2xl">
+                    <div class="relative w-full h-72 rounded-2xl overflow-hidden bg-slate-700 flex items-center justify-center">
+                        <!-- Mock Map Background Image -->
+                        <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-60">
+                        <div class="absolute bg-white text-slate-900 p-4 rounded-2xl shadow-2xl text-center max-w-xs">
+                            <i class="fa-solid fa-map-pin text-rose-600 text-2xl mb-1"></i>
+                            <h4 class="font-bold text-sm">Dr. Aakash Sharma Clinic</h4>
+                            <p class="text-[11px] text-slate-500 mt-1">Sector 18, New Delhi</p>
+                            <a href="https://maps.google.com" target="_blank" class="mt-2 inline-block text-xs font-bold text-brand-600 underline">Open in Google Maps &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER CTA -->
+    <section class="gradient-bg text-white py-14">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <h2 class="text-3xl sm:text-4xl font-black">Apni Healthy Life Ka Safar Aaj Hi Shuru Karein!</h2>
+            <p class="text-emerald-100 max-w-xl mx-auto text-sm sm:text-base">Take the first step towards reversing metabolic diseases with personalized nutrition.</p>
+            <button onclick="openBookingModal()" class="bg-white text-brand-900 hover:bg-brand-50 font-black px-8 py-4 rounded-2xl shadow-2xl transition-all">
+                Book Consultation Now
+            </button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="space-y-3">
+                <div class="flex items-center gap-2 text-white font-bold text-lg">
+                    <i class="fa-solid fa-heart-pulse text-brand-500"></i> Dr. Aakash Sharma
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed">MD Clinical Nutritionist dedicated to sustainable health transformations via real Indian whole foods.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-sm mb-3">Quick Navigation</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#about" class="hover:text-white">About Doctor</a></li>
+                    <li><a href="#services" class="hover:text-white">Specialized Plans</a></li>
+                    <li><a href="#calculators" class="hover:text-white">BMI & TDEE Calculators</a></li>
+                    <li><a href="#recipes" class="hover:text-white">Healthy Recipes</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-sm mb-3">Specialties</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#services" class="hover:text-white">Weight Loss & Reversal</a></li>
+                    <li><a href="#services" class="hover:text-white">Diabetes Reversal Protocol</a></li>
+                    <li><a href="#services" class="hover:text-white">Thyroid & PCOS Care</a></li>
+                    <li><a href="#services" class="hover:text-white">Gut Microbiome Healing</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-sm mb-3">Connect With Doctor</h4>
+                <div class="flex space-x-3 text-slate-300">
+                    <a href="#" class="w-9 h-9 rounded-xl bg-slate-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-xl bg-slate-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-xl bg-slate-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-xl bg-slate-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 border-t border-slate-900 text-center text-xs text-slate-600">
+            &copy; 2026 Dr. Aakash Sharma Clinic. All Rights Reserved. Medical Disclaimer: Results may vary based on individual metabolic health profile.
+        </div>
+    </footer>
+
+    <!-- APPOINTMENT BOOKING MODAL -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto">
+            <button onclick="closeBookingModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="mb-6">
+                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest">Consult Dr. Aakash</span>
+                <h3 class="text-2xl font-bold text-slate-900">Book Appointment</h3>
+                <p class="text-xs text-slate-500 mt-1">Select mode (In-Clinic / Online Video) and preferred time slot.</p>
+            </div>
+
+            <form id="booking-form" onsubmit="submitAppointment(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Full Name</label>
+                    <input type="text" required placeholder="e.g. Ramesh Kumar" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">WhatsApp Number</label>
+                        <input type="tel" required placeholder="10-digit mobile" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Consultation Mode</label>
+                        <select class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm">
+                            <option>Online Video Call</option>
+                            <option>In-Clinic Visit (Delhi)</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Primary Health Concern</label>
+                    <select class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm">
+                        <option>Weight Loss & Inch Loss</option>
+                        <option>Diabetes Reversal (HbA1c)</option>
+                        <option>PCOS / Thyroid Care</option>
+                        <option>Fatty Liver & Gut Health</option>
+                        <option>Muscle Building & Sports</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Preferred Date</label>
+                    <input type="date" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm">
+                </div>
+
+                <button type="submit" class="w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl shadow-lg transition">Confirm Booking</button>
+            </form>
+
+            <div id="booking-success" class="hidden text-center py-6 space-y-3">
+                <div class="w-16 h-16 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center text-3xl mx-auto">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h4 class="text-xl font-bold text-slate-900">Appointment Slot Requested!</h4>
+                <p class="text-xs text-slate-600">Dr. Aakash's team will contact you on WhatsApp within 2 hours to confirm your timing slot.</p>
+                <button onclick="closeBookingModal()" class="px-6 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-bold rounded-lg">Close Window</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- RECIPE MODAL -->
+    <div id="recipe-modal" class="fixed inset-0 z-50 hidden bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 relative shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto">
+            <button onclick="closeRecipeModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="recipe-modal-content"></div>
+        </div>
+    </div>
+
+    <!-- BLOG MODAL -->
+    <div id="blog-modal" class="fixed inset-0 z-50 hidden bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto">
+            <button onclick="closeBlogModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="blog-modal-body"></div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT APP LOGIC -->
+    <script>
+        function scrollToSection(id) {
+            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        document.getElementById('mobile-menu-btn')?.addEventListener('click', toggleMobileMenu);
+
+        function openBookingModal() {
+            document.getElementById('booking-modal').classList.remove('hidden');
+            document.getElementById('booking-form').classList.remove('hidden');
+            document.getElementById('booking-success').classList.add('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+        }
+
+        function submitAppointment(e) {
+            e.preventDefault();
+            document.getElementById('booking-form').classList.add('hidden');
+            document.getElementById('booking-success').classList.remove('hidden');
+        }
+
+        // Calculators Logic
+        function switchCalc(type) {
+            ['bmi', 'calorie', 'water'].forEach(t => {
+                document.getElementById(`calc-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).classList.remove('border-brand-600', 'bg-white', 'text-slate-800');
+                document.getElementById(`tab-${t}`).classList.add('border-transparent', 'text-slate-500');
+            });
+
+            document.getElementById(`calc-${type}`).classList.remove('hidden');
+            document.getElementById(`tab-${type}`).classList.add('border-brand-600', 'bg-white', 'text-slate-800');
+            document.getElementById(`tab-${type}`).classList.remove('border-transparent', 'text-slate-500');
+        }
+
+        function calculateBMI() {
+            const h = parseFloat(document.getElementById('bmi-height').value) / 100;
+            const w = parseFloat(document.getElementById('bmi-weight').value);
+            const resBox = document.getElementById('bmi-result');
+
+            if(!h || !w || h <= 0 || w <= 0) {
+                alert('Kripya sahi Height aur Weight enter karein.');
+                return;
+            }
+
+            const bmi = (w / (h * h)).toFixed(1);
+            document.getElementById('bmi-score').innerText = bmi;
+
+            let status = '', color = '', tip = '';
+            if(bmi < 18.5) {
+                status = 'Underweight (Vajan Kam Hai)';
+                color = 'text-amber-600';
+                tip = 'Protein aur calories badhane ki zaroorat hai.';
+            } else if(bmi >= 18.5 && bmi <= 24.9) {
+                status = 'Normal Ideal Weight (Sahi Vajan)';
+                color = 'text-emerald-600';
+                tip = 'Bahut badiya! Apne healthy diet schedule ko maintain rakhein.';
+            } else if(bmi >= 25 && bmi <= 29.9) {
+                status = 'Overweight (Thoda Vajan Zyada)';
+                color = 'text-amber-600';
+                tip = 'Sugar intake kam karein aur daily 30 min walk karein.';
+            } else {
+                status = 'Obese Range (High Weight)';
+                color = 'text-rose-600';
+                tip = 'Health issues se bachne ke liye doctor consultant plan lein.';
+            }
+
+            const statusEl = document.getElementById('bmi-status');
+            statusEl.innerText = status;
+            statusEl.className = `text-base font-bold ${color}`;
+            document.getElementById('bmi-tip').innerText = tip;
+            resBox.classList.remove('hidden');
+        }
+
+        function calculateCalories() {
+            const age = parseInt(document.getElementById('cal-age').value);
+            const gender = document.getElementById('cal-gender').value;
+            const weight = parseFloat(document.getElementById('cal-weight').value);
+            const height = parseFloat(document.getElementById('cal-height').value);
+            const activity = parseFloat(document.getElementById('cal-activity').value);
+
+            if(!age || !weight || !height) {
+                alert('Kripya saare numbers sahi bharein.');
+                return;
+            }
+
+            let bmr = (gender === 'male') 
+                ? (10 * weight) + (6.25 * height) - (5 * age) + 5
+                : (10 * weight) + (6.25 * height) - (5 * age) - 161;
+
+            const tdee = Math.round(bmr * activity);
+            document.getElementById('cal-score').innerText = tdee;
+            document.getElementById('cal-loss').innerText = (tdee - 450) + ' kcal';
+            document.getElementById('cal-gain').innerText = (tdee + 400) + ' kcal';
+            document.getElementById('cal-result').classList.remove('hidden');
+        }
+
+        function calculateWater() {
+            const weight = parseFloat(document.getElementById('water-weight').value);
+            const exercise = parseFloat(document.getElementById('water-exercise').value) || 0;
+
+            if(!weight || weight <= 0) {
+                alert('Kripya apna sahi Weight enter karein.');
+                return;
+            }
+
+            let liters = (weight * 0.033) + ((exercise / 30) * 0.35);
+            liters = liters.toFixed(1);
+            const glasses = Math.round((liters * 1000) / 250);
+
+            document.getElementById('water-score').innerText = liters;
+            document.getElementById('water-glasses').innerText = glasses;
+            document.getElementById('water-result').classList.remove('hidden');
+        }
+
+        // Recipes Data
+        const recipesList = [
+            {
+                id: 1,
+                category: 'breakfast',
+                title: 'High Protein Oats Besan Chilla',
+                cal: '240 kcal',
+                time: '12 Mins',
+                image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&q=80&w=600',
+                protein: '14g',
+                carbs: '28g',
+                fat: '6g',
+                ingredients: ['Rolled Oats powder', 'Besan', 'Grated Paneer', 'Green Chillies & Spinach']
+            },
+            {
+                id: 2,
+                category: 'detox',
+                title: 'Chia Seed Mint Detox Cooler',
+                cal: '45 kcal',
+                time: '5 Mins',
+                image: 'https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&q=80&w=600',
+                protein: '2g',
+                carbs: '6g',
+                fat: '1g',
+                ingredients: ['Soaked Chia seeds', 'Fresh Mint Leaves', 'Lemon Juice', 'Pink Salt']
+            },
+            {
+                id: 3,
+                category: 'dinner',
+                title: 'Grilled Paneer Vegetable Skewers',
+                cal: '280 kcal',
+                time: '18 Mins',
+                image: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&q=80&w=600',
+                protein: '19g',
+                carbs: '12g',
+                fat: '14g',
+                ingredients: ['Low Fat Paneer', 'Bell Peppers', 'Onions', 'Hung Curd Marinade']
+            }
+        ];
+
+        function renderRecipes(items) {
+            const container = document.getElementById('recipe-grid');
+            container.innerHTML = '';
+
+            items.forEach(r => {
+                container.innerHTML += `
+                    <div class="bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-lg transition">
+                        <div class="h-44 overflow-hidden relative">
+                            <img src="${r.image}" class="w-full h-full object-cover">
+                            <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-slate-900 text-[11px] font-extrabold px-3 py-1 rounded-full shadow">${r.cal}</span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-bold text-slate-900 text-base mb-2">${r.title}</h3>
+                            <div class="flex items-center gap-4 text-xs text-slate-500 mb-4">
+                                <span><i class="fa-regular fa-clock text-brand-600"></i> ${r.time}</span>
+                                <span><i class="fa-solid fa-dumbbell text-brand-600"></i> Protein: ${r.protein}</span>
+                            </div>
+                            <button onclick="openRecipeModal(${r.id})" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition">
+                                View Recipe Details
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function filterRecipe(cat) {
+            document.querySelectorAll('.recipe-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-600', 'text-white');
+                btn.classList.add('bg-slate-100', 'text-slate-700');
+            });
+            event.target.classList.remove('bg-slate-100', 'text-slate-700');
+            event.target.classList.add('bg-brand-600', 'text-white');
+
+            if(cat === 'all') renderRecipes(recipesList);
+            else renderRecipes(recipesList.filter(r => r.category === cat));
+        }
+
+        function openRecipeModal(id) {
+            const r = recipesList.find(item => item.id === id);
+            const modalBody = document.getElementById('recipe-modal-content');
+            modalBody.innerHTML = `
+                <img src="${r.image}" class="w-full h-48 object-cover rounded-2xl mb-4">
+                <h3 class="text-2xl font-bold text-slate-900">${r.title}</h3>
+                <p class="text-xs text-slate-500 mt-1 mb-4">Preparation Time: ${r.time} • Energy: ${r.cal}</p>
+                <div class="grid grid-cols-3 gap-2 bg-slate-50 p-3 rounded-xl text-center text-xs font-bold text-slate-700 mb-4 border">
+                    <div>Protein: <span class="text-brand-600">${r.protein}</span></div>
+                    <div>Carbs: <span class="text-brand-600">${r.carbs}</span></div>
+                    <div>Healthy Fat: <span class="text-brand-600">${r.fat}</span></div>
+                </div>
+                <h4 class="font-bold text-xs text-slate-800 uppercase tracking-wider mb-2">Key Ingredients:</h4>
+                <ul class="list-disc pl-5 text-xs text-slate-600 space-y-1 mb-4">
+                    ${r.ingredients.map(ing => `<li>${ing}</li>`).join('')}
+                </ul>
+                <button onclick="closeRecipeModal()" class="w-full py-3 bg-slate-900 text-white text-xs font-bold rounded-xl">Close Recipe</button>
+            `;
+            document.getElementById('recipe-modal').classList.remove('hidden');
+        }
+
+        function closeRecipeModal() {
+            document.getElementById('recipe-modal').classList.add('hidden');
+        }
+
+        // Articles Data & Handler
+        const blogsData = {
+            superfoods: {
+                title: "5 Indian Superfoods Jo Metabolism 2X Fast Karte Hain",
+                content: "Amla, Sabja seeds, Methi dana aur Ghee hamari rasoi ke sabse acche fat burning foods hain. Unhe sahi matra aur time par lene se natural weight loss speed up hota hai."
+            },
+            diabetes: {
+                title: "Kya Diabetes Patient Roti Aur Rice Kha Sakte Hain?",
+                content: "Haan! Portion size control karke, Wheat flour ke sath Chana ya Jowar flour mix karke, aur pehle Salad khane se blood sugar normal rehta hai."
+            },
+            gut: {
+                title: "Acidity, Gas aur Constipation Ka Permanent Solution",
+                content: "Kachha salad khane ki timing, rozana Buttermilk (Chaas) ka sevan aur 32 baar chew karke khane se gut inflammation khatam ho jata hai."
+            }
+        };
+
+        function readBlog(key) {
+            const b = blogsData[key];
+            document.getElementById('blog-modal-body').innerHTML = `
+                <h3 class="text-2xl font-bold text-slate-900 mb-2">${b.title}</h3>
+                <p class="text-xs text-brand-600 font-bold mb-4">By Dr. Aakash Sharma • MD Clinical Nutrition</p>
+                <p class="text-sm text-slate-600 leading-relaxed mb-6">${b.content}</p>
+                <button onclick="closeBlogModal()" class="px-6 py-2.5 bg-brand-600 text-white font-bold text-xs rounded-xl">Close Article</button>
+            `;
+            document.getElementById('blog-modal').classList.remove('hidden');
+        }
+
+        function closeBlogModal() {
+            document.getElementById('blog-modal').classList.add('hidden');
+        }
+
+        function toggleFaq(n) {
+            const ans = document.getElementById(`faq-ans-${n}`);
+            const icon = document.getElementById(`faq-icon-${n}`);
+            if(ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                ans.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        window.onload = function() {
+            renderRecipes(recipesList);
+        };
+    </script>
+</body>
+</html>
